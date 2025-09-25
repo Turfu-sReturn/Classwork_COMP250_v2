@@ -43,26 +43,17 @@ public class SLinkedList {
         }
 
         // get the reference needed to update the tail
-        SNode temp = tail;
-        SNode newTail = null;
-        for (int i = 0; i < this.size; i++) {
-            if (newTail == null) {
-                newTail = head;
-                continue;
-            }
-            if (newTail.next == temp) {
-                break;
-            }
-
-            newTail = newTail.next;
-        }
+        SNode tmp = head;
+        while (tmp.next != tail)
+            tmp = tmp.next;
 
         // update the fields
-        tail = newTail;
+        tail = tmp;
+        String return_element = tmp.next.element;
         tail.next = null;
         size -= 1;
 
         // return the element removed
-        return temp.element;
+        return return_element;
     }
 }
